@@ -1,0 +1,11 @@
+﻿{
+  "Group": "Promotion feeds",
+  "FriendlyName": "",
+  "SystemName": "PromotionFeed.PriceGrabber",
+  "Version": "1.41",
+  "SupportedVersions": [ "4.40" ],
+  "Author": "nopCommerce team, Nop-Station Team",
+  "DisplayOrder": 1,
+  "FileName": "Nop.Plugin.Feed.PriceGrabber.dll",
+  "Description": "This plugin enables generate feed for the PriceGrabber"
+}
