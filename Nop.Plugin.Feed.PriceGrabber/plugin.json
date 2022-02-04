@@ -3,7 +3,7 @@
   "FriendlyName": "",
   "SystemName": "PromotionFeed.PriceGrabber",
   "Version": "1.41",
-  "SupportedVersions": [ "4.40" ],
+  "SupportedVersions": [ "4.50" ],
   "Author": "nopCommerce team, Nop-Station Team",
   "DisplayOrder": 1,
   "FileName": "Nop.Plugin.Feed.PriceGrabber.dll",

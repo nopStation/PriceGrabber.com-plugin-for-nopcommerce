@@ -13,6 +13,7 @@ using Nop.Plugin.Feed.PriceGrabber.Models;
 using Nop.Services;
 using Nop.Services.Catalog;
 using Nop.Services.Directory;
+using Nop.Services.Html;
 using Nop.Services.Localization;
 using Nop.Services.Logging;
 using Nop.Services.Media;
@@ -45,6 +46,7 @@ namespace Nop.Plugin.Feed.PriceGrabber.Controllers
         private readonly IPermissionService _permissionService;
         private readonly IUrlRecordService _urlRecordService;
         private readonly INotificationService _notificationService;
+        private readonly IHtmlFormatter _htmlFormatter;
 
         #endregion
 
@@ -63,7 +65,7 @@ namespace Nop.Plugin.Feed.PriceGrabber.Controllers
             IWebHostEnvironment webHostEnvironment,
             IPermissionService permissionService,
             IUrlRecordService urlRecordService,
-            INotificationService notificationService)
+            INotificationService notificationService, IHtmlFormatter htmlFormatter)
         {
             _currencySettings = currencySettings;
             _categoryService = categoryService;
@@ -79,6 +81,7 @@ namespace Nop.Plugin.Feed.PriceGrabber.Controllers
             _permissionService = permissionService;
             _urlRecordService = urlRecordService;
             _notificationService = notificationService;
+            _htmlFormatter = htmlFormatter;
         }
 
         #endregion
@@ -208,7 +211,7 @@ namespace Nop.Plugin.Feed.PriceGrabber.Controllers
                             //description
                             var description = !string.IsNullOrEmpty(product.FullDescription) ? product.FullDescription
                                 : !string.IsNullOrEmpty(product.ShortDescription) ? product.ShortDescription : product.Name;
-                            description = ReplaceSpecChars(Core.Html.HtmlHelper.StripTags(description));
+                            description = ReplaceSpecChars(_htmlFormatter.StripTags(description));
 
                             //price
                             var currency = await _currencyService.GetCurrencyByIdAsync(model.CurrencyId);
